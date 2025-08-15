@@ -12,6 +12,7 @@ public class LeitorLivros{
         try{
             System.out.println("Iniciando abertura do arquivo");
             livros =Files.readAllLines(arq_livros).toArray(new String[0]);
+            System.out.println("Terminou de ler o arquivo");
             for(String livro : livros){
                 System.out.println(livro);
             }
