@@ -4,7 +4,7 @@ import model.AssentoExecutiva;
 import model.AssentoPrimeiraClasse;
 import model.Passageiro;
 
-public class App {
+public class Main {
     public static void main(String[] args) {
         Assento a1 = new AssentoEconomica("Economica", 500.0);
         //System.out.println("Valor do Assento: "+ a1.calcularPrecoFinal());
