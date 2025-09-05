@@ -90,6 +90,7 @@ public class App {
     public static void main(String[] args) {
         List<String> linhas;
         Path arquivo = Paths.get("src/produtos.txt");
+
         List<Produto> produtos = new ArrayList<>();
 
 
