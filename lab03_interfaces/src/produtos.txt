@@ -1,2 +1,5 @@
-Desodorante;10;Rexona
-Escova de Dente;9;Colgate
+Teclado do professor;50;Logitech
+Mouse;35;Microsoft
+Pão de queijo;100;Borges
+Coca-cola;10;Bar do Zé
+Teclado Multimidia;200;Microsoft
