@@ -14,12 +14,13 @@ public class App {
             Connection conn = DriverManager.getConnection(url);
 
             while (true) {
-                System.out.println("\nMenu:");
-                System.out.println("1 - Listar livros");
-                System.out.println("2 - Inserir livro");
-                System.out.println("3 - Atualizar autor de livro");
-                System.out.println("4 - Remover livro");
-                System.out.println("0 - Sair");
+                System.out.println("\n ============ Menu:============");
+                System.out.println("| 1 - Listar livros            |");
+                System.out.println("| 2 - Inserir livro            |");
+                System.out.println("| 3 - Atualizar autor de livro |");
+                System.out.println("| 4 - Remover livro            |");
+                System.out.println("| 0 - Sair                     |");
+                System.out.println(" ==============================");
                 System.out.print("Escolha uma opção: ");
                 int opcao = scanner.nextInt();
                 scanner.nextLine();
@@ -38,7 +39,6 @@ public class App {
                             System.out.println("ID: " + rs.getString("ID"));
                             System.out.println("TITULO: " + rs.getString("TITULO"));
                             System.out.println("AUTOR: " + rs.getString("AUTOR"));
-                            System.out.println("-------------------");
                         }
                         rs.close();
                         st.close();
@@ -94,11 +94,9 @@ public class App {
                 }
             }
             conn.close();
+            scanner.close();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            scanner.close();
         }
     }
 }
-
