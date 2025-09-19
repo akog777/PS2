@@ -10,20 +10,20 @@ import mack.model.Emprestimos;
 
 public class DAOEmprestimos extends DAO{
 
-    public List<Livros> listAllLivros(){
-        List<Livros> listRet = new ArrayList<>();
+    public List<Emprestimos> listAllEmprestimos(){
+        List<Emprestimos> listRet = new ArrayList<>();
         try {
             Statement stmt = super.connect().createStatement();
 
             //Consultando
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Livros");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Emprestimos");
 
             while(rs.next()){
-                Livros liv = new Livros();
-                liv.setId(rs.getLong("ID"));
-                liv.setNome(rs.getString("nome"));
-                liv.setAutor(rs.getString("autor"));
-                listRet.add(liv);
+                Emprestimos emp = new Emprestimos();
+                emp.setId(rs.getLong("ID"));
+                emp.setIdLivro(rs.getInt("ID_LIVRO"));
+                emp.setDataRetirada(rs.getDate("DATA_RETIRADA"));
+                listRet.add(emp);
             }
          } catch (Exception e) {
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class DAOEmprestimos extends DAO{
 
             int qte = pstmt.executeUpdate();
             if(qte >=1)
-                System.out.println("inserido com sucesso");
+                System.out.println("Inserido com sucesso");
          } catch (Exception e) {
             e.printStackTrace();
         }

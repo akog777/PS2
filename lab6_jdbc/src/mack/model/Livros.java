@@ -2,14 +2,14 @@ package mack.model;
 
 public class Livros {
     private Long id;
-    private String nome;
+    private String titulo;
     private String autor;
 
     public Livros(){}
 
-    public Livros(Long id, String nome, String autor){
+    public Livros(Long id, String titulo, String autor){
         this.id=id;
-        this.nome=nome;
+        this.titulo=titulo;
         this.autor=autor;
     }
 
@@ -17,8 +17,8 @@ public class Livros {
         this.id=id;
     }
 
-    public void setNome(String nome){
-        this.nome=nome;
+    public void setTitulo(String titulo){
+        this.titulo=titulo;
     }
 
     public void setAutor(String autor){
@@ -29,8 +29,8 @@ public class Livros {
         return this.id;
     }
 
-    public String getNome(){
-        return this.nome;
+    public String getTitulo(){
+        return this.titulo;
     }
 
     public String getAutor(){

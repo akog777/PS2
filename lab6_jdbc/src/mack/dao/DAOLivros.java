@@ -16,12 +16,12 @@ public class DAOLivros extends DAO{
             Statement stmt = super.connect().createStatement();
 
             //Consultando
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Livros");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM livros");
 
             while(rs.next()){
                 Livros liv = new Livros();
                 liv.setId(rs.getLong("ID"));
-                liv.setNome(rs.getString("nome"));
+                liv.setTitulo(rs.getString("titulo"));
                 liv.setAutor(rs.getString("autor"));
                 listRet.add(liv);
             }
@@ -35,16 +35,16 @@ public class DAOLivros extends DAO{
     public void create(Livros liv){
         try {
         //inserindo
-            String sql_insert = "INSERT INTO Livros (NOME, AUTOR) VALUES(?,?)";
+            String sql_insert = "INSERT INTO Livros (TITULO, AUTOR) VALUES(?,?)";
 
             PreparedStatement pstmt = super.connect().prepareStatement(sql_insert);
 
-            pstmt.setString(1, liv.getNome());
+            pstmt.setString(1, liv.getTitulo());
             pstmt.setString(2, liv.getAutor());
 
             int qte = pstmt.executeUpdate();
             if(qte >=1)
-                System.out.println("inserido com sucesso");
+                System.out.println("Inserido com sucesso");
          } catch (Exception e) {
             e.printStackTrace();
         }
