@@ -44,9 +44,56 @@ public class DAOLivros extends DAO{
 
             int qte = pstmt.executeUpdate();
             if(qte >=1)
-                System.out.println("Inserido com sucesso");
+                System.out.println("Livro criado.");
          } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+        public Livros select(long id) {
+            Livros liv = null;
+            try {
+                String sql = "SELECT * FROM Livros WHERE ID = ?";
+                PreparedStatement pstmt = super.connect().prepareStatement(sql);
+                pstmt.setLong(1, id);
+                ResultSet rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    liv = new Livros();
+                    liv.setId(rs.getLong("ID"));
+                    liv.setTitulo(rs.getString("TITULO"));
+                    liv.setAutor(rs.getString("AUTOR"));
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return liv;
+        }
+
+        public void update(Livros liv) {
+            try {
+                String sql = "UPDATE Livros SET TITULO = ?, AUTOR = ? WHERE ID = ?";
+                PreparedStatement pstmt = super.connect().prepareStatement(sql);
+                pstmt.setString(1, liv.getTitulo());
+                pstmt.setString(2, liv.getAutor());
+                pstmt.setLong(3, liv.getId());
+                int qte = pstmt.executeUpdate();
+                if(qte >= 1)
+                    System.out.println("Livro atualizado.");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void delete(long id) {
+            try {
+                String sql = "DELETE FROM Livros WHERE ID = ?";
+                PreparedStatement pstmt = super.connect().prepareStatement(sql);
+                pstmt.setLong(1, id);
+                int qte = pstmt.executeUpdate();
+                if(qte >= 1)
+                    System.out.println("Livro deletado.");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 }
