@@ -11,7 +11,6 @@ public class Emprestimos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Agora em camelCase, mas mapeado para a coluna id_livro no banco
     @Column(name = "id_livro")
     private Long idLivro;
 
@@ -26,7 +25,6 @@ public class Emprestimos {
         this.dataRetirada = dataRetirada;
     }
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }

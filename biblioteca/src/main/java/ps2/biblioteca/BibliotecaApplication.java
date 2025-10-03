@@ -22,14 +22,12 @@ public class BibliotecaApplication implements CommandLineRunner {
     @Autowired
     private DAOEmprestimos empDAO;
 
-    // Gerenciamento de Scanner centralizado
     private final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         SpringApplication.run(BibliotecaApplication.class, args);
     }
     
-    // --- Métodos Auxiliares de Input/Output ---
     private String nextLine(String prompt) {
         System.out.print(prompt);
         return scanner.nextLine();
@@ -44,24 +42,22 @@ public class BibliotecaApplication implements CommandLineRunner {
         }
     }
     
-    // --- MÉTODOS CRUD ---
-
     public void listar() {
         Iterable<Livros> livros = livrosDAO.findAll();
         Iterable<Emprestimos> emprestimos = empDAO.findAll();
-        System.out.println("\n===== Livros =====");
+        System.out.println("\n======= Livros =======");
         for (Livros l : livros) {
             System.out.println("ID: " + l.getId());
             System.out.println("Título: " + l.getTitulo());
             System.out.println("Autor: " + l.getAutor());
-            System.out.println("-----------------------");
+            System.out.println("=======================");
         }
         System.out.println("\n===== Empréstimos =====");
         for (Emprestimos e : emprestimos) {
             System.out.println("ID: " + e.getId());
-            System.out.println("ID do Livro: " + e.getIdLivro()); // corrigido
-            System.out.println("Data de Empréstimo: " + e.getDataRetirada()); // corrigido
-            System.out.println("-----------------------");
+            System.out.println("ID do Livro: " + e.getIdLivro());
+            System.out.println("Data de Empréstimo: " + e.getDataRetirada());
+            System.out.println("=======================");
         }
         System.out.println();
     }
@@ -75,8 +71,8 @@ public class BibliotecaApplication implements CommandLineRunner {
         if (optionalEmprestimo.isPresent()) {
             Emprestimos e = optionalEmprestimo.get();
             System.out.println("ID: " + e.getId());
-            System.out.println("ID do Livro: " + e.getIdLivro()); // corrigido
-            System.out.println("Data de Empréstimo: " + e.getDataRetirada()); // corrigido
+            System.out.println("ID do Livro: " + e.getIdLivro());
+            System.out.println("Data de Empréstimo: " + e.getDataRetirada());
             System.out.println("-----------------------\n");
         } else {
             System.out.println("Empréstimo não encontrado!\n");
@@ -117,11 +113,11 @@ public class BibliotecaApplication implements CommandLineRunner {
         String data_emprestimo_str = nextLine("Digite a data de empréstimo (formato YYYY-MM-DD): ");
         
         Emprestimos e = new Emprestimos(); 
-        e.setIdLivro(livro_id); // corrigido
+        e.setIdLivro(livro_id);
         
         try {
             LocalDate dataEmprestimo = LocalDate.parse(data_emprestimo_str); 
-            e.setDataRetirada(dataEmprestimo); // corrigido
+            e.setDataRetirada(dataEmprestimo);
             empDAO.save(e);
             System.out.println("Empréstimo criado com sucesso!\n");
         } catch (DateTimeParseException ex) {
@@ -161,7 +157,7 @@ public class BibliotecaApplication implements CommandLineRunner {
             if (!novoLivroIdStr.isBlank()) {
                  try {
                     Long novoLivroId = Long.parseLong(novoLivroIdStr);
-                    e.setIdLivro(novoLivroId); // corrigido
+                    e.setIdLivro(novoLivroId);
                 } catch (NumberFormatException ex) {
                     System.out.println("Aviso: Formato do ID do livro inválido. O ID anterior será mantido.");
                 }
@@ -171,7 +167,7 @@ public class BibliotecaApplication implements CommandLineRunner {
 
             if (!data_emprestimo_str.isBlank()) {
                 try {
-                    e.setDataRetirada(LocalDate.parse(data_emprestimo_str)); // corrigido
+                    e.setDataRetirada(LocalDate.parse(data_emprestimo_str));
                 } catch (DateTimeParseException ex) {
                     System.out.println("Aviso: Formato de data inválido. Use YYYY-MM-DD. A data anterior será mantida.");
                 }
