@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 import ps2.biblioteca.model.Livros;
 
 public interface DAOEmprestimos extends CrudRepository<Emprestimos, Long>{
-
+    public List<Emprestimos> findByIdLivro(int idLivro);
 }
