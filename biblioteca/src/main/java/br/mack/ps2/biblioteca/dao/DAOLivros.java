@@ -1,4 +1,4 @@
-package ps2.biblioteca.dao;
+package br.mack.ps2.biblioteca.dao;
 
 import org.springframework.data.repository.CrudRepository;
 import ps2.biblioteca.model.Livros;
