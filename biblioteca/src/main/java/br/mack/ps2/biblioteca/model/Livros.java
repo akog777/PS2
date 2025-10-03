@@ -1,43 +1,43 @@
-package br.mack.ps2.biblioteca.model;
+package br.mack.ps2.biblioteca;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 public class Livros {
-    @Id @GeneratedValue
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
     private String autor;
 
-    public Livros(){}
-
-    public Livros(Long id, String titulo, String autor){
-        this.id=id;
-        this.titulo=titulo;
-        this.autor=autor;
+    public Livros(Long id, String titulo, String autor) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
     }
 
-    public void setId(Long id){
-        this.id=id;
+    public Long getId() {
+        return id;
     }
 
-    public void setTitulo(String titulo){
-        this.titulo=titulo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setAutor(String autor){
-        this.autor=autor;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public Long getId(){
-        return this.id;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public String getTitulo(){
-        return this.titulo;
+    public String getAutor() {
+        return autor;
     }
 
-    public String getAutor(){
-        return this.autor;
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 }

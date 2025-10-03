@@ -1,8 +1,7 @@
-package br.mack.ps2.biblioteca.dao;
+package br.mack.ps2.biblioteca;
 
 import org.springframework.data.repository.CrudRepository;
-import ps2.biblioteca.model.Livros;
+import ps2.biblioteca.model.Emprestimos;
 
-public interface DAOEmprestimos extends CrudRepository<Emprestimos, Long>{
-    public List<Emprestimos> findByIdLivro(int idLivro);
+public interface DAOEmprestimos extends CrudRepository<Emprestimo, Long> {
 }
