@@ -1,7 +1,7 @@
 package br.mack.ps2.biblioteca;
 
-import javax.persistence.*;
-
+import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Emprestimo {
@@ -9,15 +9,18 @@ public class Emprestimo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nomeCliente;
-    @ManyToOne
-    private Livros livro;
+    private Long idLivro;
+    private LocalDate dataRetirada;
 
-    public Emprestimo(Long id, String nomeCliente, Livros livro) {
+    public Emprestimo() {}
+
+    public Emprestimo(Long id, Long idLivro, LocalDate dataRetirada) {
         this.id = id;
-        this.nomeCliente = nomeCliente;
-        this.livro = livro;
+        this.idLivro = idLivro;
+        this.dataRetirada = dataRetirada;
     }
+
+    // Getters e Setters
 
     public Long getId() {
         return id;
@@ -27,19 +30,19 @@ public class Emprestimo {
         this.id = id;
     }
 
-    public String getNomeCliente() {
-        return nomeCliente;
+    public Long getIdLivro() {
+        return idLivro;
     }
 
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setIdLivro(Long idLivro) {
+        this.idLivro = idLivro;
     }
 
-    public Livros getLivro() {
-        return livro;
+    public LocalDate getDataRetirada() {
+        return dataRetirada;
     }
 
-    public void setLivro(Livros livro) {
-        this.livro = livro;
+    public void setDataRetirada(LocalDate dataRetirada) {
+        this.dataRetirada = dataRetirada;
     }
 }

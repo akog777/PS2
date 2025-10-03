@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 
+import br.mack.ps2.biblioteca.DAOLivros;
+import br.mack.ps2.biblioteca.DAOEmprestimos;
+import br.mack.ps2.biblioteca.Livros;
+import br.mack.ps2.biblioteca.Emprestimo;
+
+
 @SpringBootApplication
 public class BibliotecaApplication implements CommandLineRunner {
     

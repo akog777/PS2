@@ -1,6 +1,6 @@
 package br.mack.ps2.biblioteca;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Livros {
@@ -11,11 +11,15 @@ public class Livros {
     private String titulo;
     private String autor;
 
+    public Livros() {}
+
     public Livros(Long id, String titulo, String autor) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
     }
+
+    // Getters e setters
 
     public Long getId() {
         return id;
