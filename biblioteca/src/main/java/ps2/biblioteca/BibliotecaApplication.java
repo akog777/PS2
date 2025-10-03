@@ -37,7 +37,7 @@ public class BibliotecaApplication implements CommandLineRunner {
         try {
             return Long.parseLong(nextLine(prompt));
         } catch (NumberFormatException e) {
-            System.out.println("Entrada inválida. Digite um número longo (ID).");
+            System.out.println("Entrada inválida. Digite um número válido (ID).");
             return null; 
         }
     }
@@ -45,19 +45,19 @@ public class BibliotecaApplication implements CommandLineRunner {
     public void listar() {
         Iterable<Livros> livros = livrosDAO.findAll();
         Iterable<Emprestimos> emprestimos = empDAO.findAll();
-        System.out.println("\n======= Livros =======");
+        System.out.println("\n=========== LIVROS ==============");
         for (Livros l : livros) {
             System.out.println("ID: " + l.getId());
             System.out.println("Título: " + l.getTitulo());
             System.out.println("Autor: " + l.getAutor());
-            System.out.println("=======================");
+            System.out.println("=================================");
         }
-        System.out.println("\n===== Empréstimos =====");
+        System.out.println("\n========== EMPRÉSTIMOS ==========");
         for (Emprestimos e : emprestimos) {
             System.out.println("ID: " + e.getId());
             System.out.println("ID do Livro: " + e.getIdLivro());
             System.out.println("Data de Empréstimo: " + e.getDataRetirada());
-            System.out.println("=======================");
+            System.out.println("=================================");
         }
         System.out.println();
     }
@@ -73,7 +73,7 @@ public class BibliotecaApplication implements CommandLineRunner {
             System.out.println("ID: " + e.getId());
             System.out.println("ID do Livro: " + e.getIdLivro());
             System.out.println("Data de Empréstimo: " + e.getDataRetirada());
-            System.out.println("-----------------------\n");
+            System.out.println("=================================\n");
         } else {
             System.out.println("Empréstimo não encontrado!\n");
         }
@@ -90,7 +90,7 @@ public class BibliotecaApplication implements CommandLineRunner {
             System.out.println("ID: " + l.getId());
             System.out.println("Título: " + l.getTitulo());
             System.out.println("Autor: " + l.getAutor());
-            System.out.println("-----------------------\n");
+            System.out.println("=================================\n");
         } else {
             System.out.println("Livro não encontrado!\n");
         }
@@ -121,7 +121,7 @@ public class BibliotecaApplication implements CommandLineRunner {
             empDAO.save(e);
             System.out.println("Empréstimo criado com sucesso!\n");
         } catch (DateTimeParseException ex) {
-            System.out.println("Erro: Formato de data inválido. Use YYYY-MM-DD. Empréstimo não criado.\n");
+            System.out.println("Erro: Formato de data inválido.\n");
         }
     }
 
@@ -139,7 +139,7 @@ public class BibliotecaApplication implements CommandLineRunner {
             if (!autor.isBlank()) l.setAutor(autor);
             
             livrosDAO.save(l);
-            System.out.println("Livro alterado com sucesso!\n");
+            System.out.println("Livro alterado!\n");
         } else {
             System.out.println("Livro não encontrado!\n");
         }
@@ -174,7 +174,7 @@ public class BibliotecaApplication implements CommandLineRunner {
             }
 
             empDAO.save(e);
-            System.out.println("Empréstimo alterado com sucesso!\n");
+            System.out.println("Empréstimo alterado!\n");
         } else {
             System.out.println("Empréstimo não encontrado!\n");
         }
@@ -186,7 +186,7 @@ public class BibliotecaApplication implements CommandLineRunner {
 
         if (empDAO.existsById(id)) {
             empDAO.deleteById(id);
-            System.out.println("Empréstimo deletado com sucesso!\n");
+            System.out.println("Empréstimo deletado!\n");
         } else {
             System.out.println("Empréstimo não encontrado!\n");
         }
@@ -198,7 +198,7 @@ public class BibliotecaApplication implements CommandLineRunner {
 
         if (livrosDAO.existsById(id)) {
             livrosDAO.deleteById(id);
-            System.out.println("Livro deletado com sucesso!\n");
+            System.out.println("Livro deletado!\n");
         } else {
             System.out.println("Livro não encontrado!\n");
         }
@@ -209,7 +209,7 @@ public class BibliotecaApplication implements CommandLineRunner {
         boolean saida = false;
 
         while (!saida) {
-            System.out.println("\n===== Biblioteca Mack =====");
+            System.out.println("\n======== BIBLIOTECA MACKENZIE ========");
             System.out.println("1 - Listar todos livros e empréstimos");
             System.out.println("2 - Buscar Livro por ID");
             System.out.println("3 - Buscar Empréstimo por ID");
