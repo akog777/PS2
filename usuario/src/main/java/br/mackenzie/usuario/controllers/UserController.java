@@ -5,13 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.server.ResponseStatusException;
-import br.mackenzie.usuario.repository.UsuarioRepository;
-import br.mackenzie.usuario.entitites.Usuario;
+
+import br.mackenzie.usuario.repository.UserRepo;
+import br.mackenzie.usuario.entities.User;
 
 @RestController
 public class UserController {
     @Autowired
-    private UserRepository rep;
+    private UserRepo rep;
 
 
     //CREATE
